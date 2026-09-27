@@ -1,5 +1,6 @@
 // Include important libraries here
 #include <SFML/Graphics.hpp>
+#include <cstdlib>
 
 
 // Make code easier to type with "using namspace"
@@ -92,6 +93,28 @@ int main() {
 
     // Measure time
     Time dt = clock.restart();
+
+    // Setup the bee
+    if (!beeActive) {
+      // How fast is the bee
+      srand((unsigned int)time(0));
+      beeSpeed = (rand() % 200) + 200;
+
+      // How high is the bee
+      srand((unsigned int)time(0) * 10);
+      float height = (rand() % 500) + 500;
+      spriteBee.setPosition({2000, height});
+      beeActive = true;
+    } else {
+      // Move the bee
+      spriteBee.setPosition({spriteBee.getPosition().x - (beeSpeed * dt.asSeconds()), spriteBee.getPosition().y});
+
+      // Has the bee reached the left-hand edge of the screen?
+      if (spriteBee.getPosition().x < -100) {
+        // Set if up ready to be a whole new bee next frame
+        beeActive = false;
+      }
+    }
 
     // Draw our game scene here
     window.draw(spriteBackground);
