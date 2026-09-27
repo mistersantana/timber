@@ -1,0 +1,20 @@
+# macOS files
+.DS_Store
+._*
+
+# Compile game executable
+/timber
+/a.out
+
+# Build output directories
+/build/
+/bin/
+
+# Compiler and debugger output
+*.o
+*.obj
+*.exe
+*.dSYM/
+
+# Local tooling cache
+/.cache/
