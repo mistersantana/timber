@@ -1,6 +1,7 @@
 // Include important libraries here
+#include <sstream>
 #include <SFML/Graphics.hpp>
-#include <cstdlib>
+// #include <cstdlib>
 
 
 // Make code easier to type with "using namspace"
@@ -66,11 +67,42 @@ int main() {
   float cloud2Speed = 0.0f;
   float cloud3Speed = 0.0f;
 
+
   // Variables to control time
   sf::Clock clock;
 
+
   // Track whether the game is running
   bool paused = true;
+
+
+  // We need to choose a font
+  int score{0};
+
+  sf::Font font("fonts/KOMIKAP_.ttf");
+
+  // Draw some text and set the font to out message
+  sf::Text messageText(font);
+  sf::Text scoreText(font);
+
+  // Assign the actual message
+  messageText.setString("Press ENTER to start!");
+  scoreText.setString("Score = 0");
+
+  // Make it really big
+  messageText.setCharacterSize(75);
+  scoreText.setCharacterSize(100);
+
+  // Choose a color
+  messageText.setFillColor(sf::Color::White);
+  scoreText.setFillColor(sf::Color::White);
+
+  // Position the text
+  sf::FloatRect textRect{messageText.getLocalBounds()};
+  messageText.setOrigin(textRect.getCenter());
+  messageText.setPosition({1920 / 2.0f, 1080 / 2.0f});
+  scoreText.setPosition({20 ,0});
+
 
   while (window.isOpen()) {
     // Process window events using the SFML3 API
