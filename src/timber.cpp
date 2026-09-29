@@ -221,6 +221,10 @@ int main() {
           cloud3Active = false;
         }
       }
+      // Update the score text
+      std::stringstream ss;
+      ss << "Score = " << score;
+      scoreText.setString(ss.str());
     }
 
     // Draw our game scene here
@@ -233,6 +237,12 @@ int main() {
     window.draw(spriteTree);
     // Draw the insect
     window.draw(spriteBee);
+    // Draw the score
+    window.draw(scoreText);
+    if (paused) {
+      // Draw our message
+      window.draw(messageText);
+    }
     // Show everything we just drew
     window.display();
   }
