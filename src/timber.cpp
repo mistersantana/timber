@@ -4,36 +4,36 @@
 
 
 // Make code easier to type with "using namspace"
-using namespace sf;
+// using namespace sf;
 
 
 // This is where our game starts from
 int main() {
   // Create a video mode object
-  VideoMode vm({1920, 1080});
+  sf::VideoMode vm({1920, 1080});
 
   // Create and open a window for the game
-  RenderWindow window(vm, "Timber!!",Style::Default);
+  sf::RenderWindow window(vm, "Timber!!",sf::Style::Default);
 
   // Create a texture to hold a graphic on GPU & load a graphic into the texture
-  Texture textureBackground("graphics/background.png");
+  sf::Texture textureBackground("graphics/background.png");
 
   // Create a sprite & attach the texture to the sprite
-  Sprite spriteBackground(textureBackground);
+  sf::Sprite spriteBackground(textureBackground);
 
   // Set the spriteBackground to cover the screen
   spriteBackground.setPosition({0,0});
 
 
   // Make a tree sprite
-  Texture textureTree("graphics/tree.png");
-  Sprite spriteTree(textureTree);
+  sf::Texture textureTree("graphics/tree.png");
+  sf::Sprite spriteTree(textureTree);
   spriteTree.setPosition({810, 0});
 
 
   // Prepare the bee
-  Texture textureBee("graphics/bee.png");
-  Sprite spriteBee(textureBee);
+  sf::Texture textureBee("graphics/bee.png");
+  sf::Sprite spriteBee(textureBee);
   spriteBee.setPosition({0, 800});
 
   // Is the bee currently moving?
@@ -44,12 +44,12 @@ int main() {
 
 
   // Make 3 cloud sprites from 1 texture
-  Texture textureCloud("graphics/cloud.png");
+  sf::Texture textureCloud("graphics/cloud.png");
 
   // 3 new sprites with the same texture
-  Sprite spriteCloud1(textureCloud);
-  Sprite spriteCloud2(textureCloud);
-  Sprite spriteCloud3(textureCloud);
+  sf::Sprite spriteCloud1(textureCloud);
+  sf::Sprite spriteCloud2(textureCloud);
+  sf::Sprite spriteCloud3(textureCloud);
 
   // Position the clouds on the left of the screen at different heights
   spriteCloud1.setPosition({0, 0});
@@ -67,7 +67,7 @@ int main() {
   float cloud3Speed = 0.0f;
 
   // Variables to control time
-  Clock clock;
+  sf::Clock clock;
 
   // Track whether the game is running
   bool paused = true;
@@ -75,18 +75,18 @@ int main() {
   while (window.isOpen()) {
     // Process window events using the SFML3 API
     while (const auto event = window.pollEvent()) {
-      if (event->is<Event::Closed>()) {
+      if (event->is<sf::Event::Closed>()) {
         window.close();
       }
     }
 
     // Handle players input
-    if (Keyboard::isKeyPressed(Keyboard::Key::Escape)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape)) {
       window.close();
     }
 
     // Start the game
-    if (Keyboard::isKeyPressed(Keyboard::Key::Enter)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter)) {
       paused = false;
     }
 
@@ -100,7 +100,7 @@ int main() {
 
     if (!paused) {
       // Measure time
-      Time dt = clock.restart();
+      sf::Time dt = clock.restart();
 
 
       // Setup the bee
