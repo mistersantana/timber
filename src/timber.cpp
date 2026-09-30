@@ -77,9 +77,9 @@ int main() {
   float timeBarHeight = 80;
   timeBar.setSize({timeBarStartWidth, timeBarHeight});
   timeBar.setFillColor(sf::Color::Red);
-  timeBar.setPosition({(1920 / 2) - timeBarStartWidth / 2, 980});
+  timeBar.setPosition({(1920.0f / 2) - timeBarStartWidth / 2, 980});
 
-  Time gameTimeTotal;
+  sf::Time gameTimeTotal;
   float timeRemaining = 6.0f;
   float timeBarWidthPerSecond = timeBarStartWidth / timeRemaining;
 
