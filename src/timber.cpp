@@ -71,6 +71,18 @@ int main() {
   // Variables to control time
   sf::Clock clock;
 
+  // Time bar
+  sf::RectangleShape timeBar;
+  float timeBarStartWidth = 400;
+  float timeBarHeight = 80;
+  timeBar.setSize({timeBarStartWidth, timeBarHeight});
+  timeBar.setFillColor(sf::Color::Red);
+  timeBar.setPosition({(1920 / 2) - timeBarStartWidth / 2, 980});
+
+  Time gameTimeTotal;
+  float timeRemaining = 6.0f;
+  float timeBarWidthPerSecond = timeBarStartWidth / timeRemaining;
+
 
   // Track whether the game is running
   bool paused = true;
